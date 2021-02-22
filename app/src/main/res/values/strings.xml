@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Auth</string>
+    <string name="button">GET STARTED</string>
+    <string name="Enter_phone"> Enter your phone number to get started.</string>
+    <string name="you_will">You will receive a verification code. Carrier rates may apply.</string>
+    <string name="mobile_num">Phone number</string>
+    <string name="next_button">Next</string>
+    <string name="verification">Enter the code we have sent to your number.</string>
+    <string name="verify">Verify</string>
+    <string name="otp">enter otp</string>
+    <string name="dashboard">Home page</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="contact_number">number</string>
+    <string name="register">register</string>
+    <string name="username">username</string>
+    <string name="login">login</string>
+    <string name="not_a_user">not a user?REGISTER HERE</string>
+    <string name="login_otp">or login with otp?CLICK HERE</string>
+</resources>

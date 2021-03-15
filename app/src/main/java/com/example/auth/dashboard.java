@@ -4,19 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+
+import com.example.auth.views.ProductMain;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class dashboard extends AppCompatActivity {
+public class dashboard extends AppCompatActivity implements CustomAdaptor.OnNoteListener {
     TextView CompanyName,Description;
     ImageView Settings,Cart,Banner;
     EditText Search;
     RecyclerView mList1;
     List<App> appList;
+    private static final String TAG = "dashboard";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +50,17 @@ public class dashboard extends AppCompatActivity {
         mList1.setLayoutManager(manager1);
 
 
-        CustomAdaptor adaptor1 = new CustomAdaptor(this,appList);
+        CustomAdaptor adaptor1 = new CustomAdaptor(this,appList,this::onNoteClick);
         mList1.setAdapter(adaptor1);
 
+
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        Log.d(TAG, "onNoteClick: clicked.");
+        Intent intent = new Intent(this, ProductMain.class);
+        startActivity(intent);
 
     }
 }

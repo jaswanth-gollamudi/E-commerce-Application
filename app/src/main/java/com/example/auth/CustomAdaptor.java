@@ -17,18 +17,30 @@ public class CustomAdaptor extends RecyclerView.Adapter<CustomAdaptor.MyViewHold
 
     private Context context;
     private List<App> apps;
+    private OnNoteListener mOnNoteListener;
 
-    public CustomAdaptor(Context context, List<App> apps) {
+    public CustomAdaptor(Context context, List<App> apps, OnNoteListener onNoteListener) {
         this.context = context;
         this.apps = apps;
+        this.mOnNoteListener= onNoteListener;
+
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView mImage;
+        OnNoteListener onNoteListener;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView,OnNoteListener onNoteListener) {
             super(itemView);
             mImage = itemView.findViewById(R.id.image);
+            itemView.setOnClickListener(this);
+            this.onNoteListener= onNoteListener;
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            onNoteListener.onNoteClick(getAdapterPosition());
         }
     }
 
@@ -37,7 +49,7 @@ public class CustomAdaptor extends RecyclerView.Adapter<CustomAdaptor.MyViewHold
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.recycle_layout,parent,false);
 
-        return new MyViewHolder(v);
+        return new MyViewHolder(v,mOnNoteListener);
     }
 
     @Override
@@ -51,6 +63,10 @@ public class CustomAdaptor extends RecyclerView.Adapter<CustomAdaptor.MyViewHold
     @Override
     public int getItemCount() {
         return apps.size();
+    }
+
+    public interface OnNoteListener{
+        void onNoteClick(int position);
     }
 
 

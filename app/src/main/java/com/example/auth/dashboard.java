@@ -31,8 +31,6 @@ public class dashboard extends AppCompatActivity implements CustomAdaptor.OnNote
         setContentView(R.layout.activity_dashboard);
         CompanyName=findViewById(R.id.companyName);
         Description=findViewById(R.id.description);
-        Settings = findViewById(R.id.settings);
-        Cart=findViewById(R.id.cart);
         Banner=findViewById(R.id.banner);
         Search=findViewById(R.id.search);
         mList1 = findViewById(R.id.view);
